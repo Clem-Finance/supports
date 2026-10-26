@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supports d’investissement</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#14213d;--mute:#667085;--line:#e3e7ee;--acc:#0f6e63;--pos:#0f7a4a;--neg:#b42318;--sri:#14213d}
+@media (prefers-color-scheme:dark){:root{--bg:#0e1420;--card:#161f31;--ink:#e8ecf4;--mute:#97a3b8;--line:#26334a;--acc:#4fc1b0;--pos:#4cc38a;--neg:#f2877d;--sri:#e8ecf4}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Segoe UI",system-ui,sans-serif}
+main{max-width:1200px;margin:0 auto;padding:40px 28px 60px}
+header{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:end;margin-bottom:24px}
+h1{font:600 34px/1.15 Georgia,"Times New Roman",serif;margin:0 0 4px}
+.sub{color:var(--mute);margin:0}
+.tools{display:flex;gap:10px}
+input,button{font:inherit;padding:9px 14px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+button{cursor:pointer;background:var(--acc);border-color:var(--acc);color:#fff}button:disabled{opacity:.6}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.wrap{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:820px}
+th,td{padding:14px 16px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal;min-width:280px}
+th{font-weight:600;color:var(--mute);font-size:14px;cursor:pointer;user-select:none}
+th[aria-sort]::after{content:" ▲"}th[aria-sort=descending]::after{content:" ▼"}
+tr:last-child td{border-bottom:0}
+.nm{font-weight:600}.meta{color:var(--mute);font-size:13px}
+.num{font-variant-numeric:tabular-nums;font-weight:600}.pos{color:var(--pos)}.neg{color:var(--neg)}
+.sri{display:inline-flex;gap:3px;vertical-align:middle;margin-right:8px}
+.sri i{width:9px;height:18px;border-radius:2px;background:var(--line)}.sri i.on{background:var(--sri)}
+.empty{padding:48px;text-align:center;color:var(--mute)}
+.warn{color:var(--neg);font-size:13px}
+footer{margin-top:20px;color:var(--mute);font-size:13px;max-width:80ch}
+a{color:var(--acc)}
+@media print{button,input{display:none}}
+</style></head><body><main>
+<header><div><h1>Supports d’investissement</h1><p class="sub" id="maj">Chargement…</p></div>
+<div class="tools"><input id="q" type="search" placeholder="Rechercher un nom, un ISIN…" aria-label="Rechercher"></div></header>
+<div class="wrap"><table><thead><tr id="head"></tr></thead><tbody id="body"></tbody></table></div>
+<footer>Source : <span id="src"></span>. Les performances passées ne préjugent pas des performances futures. Le risque va de 1 (le plus faible) à 7 (le plus élevé).</footer>
+</main>
+<script>
+const COLS=[["name","Support"],["category","Catégorie"],["p1","1 an"],["p3","3 ans"],["p5","5 ans"],["fees","Frais de gestion"],["sri","Risque"]];
+let data=[],sort={k:"name",d:1};
+const $=id=>document.getElementById(id);
+const pct=(v,c)=>v==null?"—":`<span class="num ${c?(v>=0?"pos":"neg"):""}">${(v>0&&c?"+":"")+v.toFixed(2).replace(".",",")} %</span>`;
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function render(){
+  const q=$("q").value.toLowerCase();
+  const rows=data.filter(s=>(s.isin+" "+(s.name||"")+" "+(s.manager||"")).toLowerCase().includes(q))
+    .sort((a,b)=>{const x=a[sort.k],y=b[sort.k];if(x==null)return 1;if(y==null)return -1;return (x>y?1:x<y?-1:0)*sort.d});
+  $("head").innerHTML=COLS.map(([k,l])=>`<th data-k="${k}" tabindex="0" ${sort.k==k?`aria-sort="${sort.d>0?"ascending":"descending"}"`:""}>${l}</th>`).join("");
+  $("body").innerHTML=rows.length?rows.map(s=>`<tr>
+   <td><div class="nm">${s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name||s.isin)}</a>`:esc(s.name||s.isin)}</div>
+   <div class="meta">${esc(s.isin)}${s.manager?" · "+esc(s.manager):""}</div>${s.ok===false?`<div class="warn">Mise à jour impossible : ${esc(s.erreur)}</div>`:""}</td>
+   <td>${esc(s.category)||"—"}</td><td>${pct(s.p1,1)}</td><td>${pct(s.p3,1)}</td><td>${pct(s.p5,1)}</td><td>${pct(s.fees)}</td>
+   <td>${s.sri?`<span class="sri" aria-hidden="true">${[1,2,3,4,5,6,7].map(i=>`<i class="${i<=s.sri?"on":""}"></i>`).join("")}</span><span class="num">${s.sri}/7</span>`:"—"}</td></tr>`).join("")
+   :`<tr><td colspan="7" class="empty">Aucun support à afficher. Lancez « Actualiser les données » ou vérifiez le fichier isin.txt.</td></tr>`;
+}
+async function load(){
+  try{const r=await fetch("data.json",{cache:"no-store"});const j=await r.json();data=j.supports;
+  $("src").textContent=j.source;
+  $("maj").textContent=j.maj?"Mis à jour le "+new Date(j.maj).toLocaleString("fr-FR",{dateStyle:"long",timeStyle:"short"}):"Données non encore chargées";}
+  catch(e){$("maj").textContent="Impossible de lire data.json."}
+  render();
+}
+$("head").addEventListener("click",e=>{const k=e.target.dataset.k;if(!k)return;sort={k,d:sort.k==k?-sort.d:1};render()});
+$("head").addEventListener("keydown",e=>{if(e.key==="Enter")e.target.click()});
+$("q").addEventListener("input",render);
+load();
+</script></body></html>
