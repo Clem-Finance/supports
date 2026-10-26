@@ -1,1 +1,97 @@
-{"maj": null, "source": "Boursorama", "supports": []}
+{
+ "maj": "2026-10-26T17:43",
+ "source": "Boursorama",
+ "supports": [
+  {
+   "isin": "LU1112771503",
+   "url": "https://www.boursorama.com/bourse/opcvm/cours/0P00017PC2/",
+   "name": "Cours Helium Fund Selection B-EUR",
+   "p1": 5.55,
+   "p3": 19.19,
+   "p5": 29.2,
+   "fees": 1.9,
+   "sri": 7,
+   "manager": "pense",
+   "category": "s Palmarès",
+   "ok": true
+  },
+  {
+   "isin": "FR001400LB16",
+   "url": "https://www.boursorama.com/bourse/opcvm/cours/0P0001S01P/",
+   "name": "Cours Aleph Monde R",
+   "p1": 16.37,
+   "p3": -46.79,
+   "p5": -59.29,
+   "fees": 1.95,
+   "sri": 7,
+   "manager": "Flornoy",
+   "category": "s Palmarès",
+   "ok": true
+  },
+  {
+   "isin": "FR0011147594",
+   "url": "https://www.boursorama.com/bourse/opcvm/cours/0P0000VH9R/",
+   "name": "Cours Omnibond R",
+   "p1": -0.88,
+   "p3": 21.79,
+   "p5": 17.2,
+   "fees": 1.28,
+   "sri": 7,
+   "manager": "Flornoy",
+   "category": "s Palmarès",
+   "ok": true
+  },
+  {
+   "isin": "FR0010011171",
+   "url": "https://www.boursorama.com/bourse/opcvm/cours/MP-805613/",
+   "name": "Cours AXA Or et Matières Premières C",
+   "p1": 29.19,
+   "p3": 135.73,
+   "p5": 175.26,
+   "fees": 1.48,
+   "sri": 7,
+   "manager": "BNP",
+   "category": "s Palmarès",
+   "ok": true
+  },
+  {
+   "isin": "LU0524465977",
+   "url": "https://www.boursorama.com/bourse/opcvm/cours/0P0000PVYU/",
+   "name": "Cours Alken European Opportunities A",
+   "p1": 9.9,
+   "p3": 99.55,
+   "p5": 124.68,
+   "fees": 2.3,
+   "sri": 7,
+   "manager": "AFFM",
+   "category": "s Palmarès",
+   "ok": true
+  },
+  {
+   "isin": "LU0336083810",
+   "url": "https://www.boursorama.com/bourse/opcvm/cours/MP-191553/",
+   "name": "Cours Carmignac Pf Asia Discovery A EUR Acc",
+   "p1": 70.89,
+   "p3": 117.28,
+   "p5": 85.87,
+   "fees": 2.33,
+   "sri": 7,
+   "manager": "Carmignac",
+   "category": "s Palmarès",
+   "ok": true
+  },
+  {
+   "isin": "FR0010143545",
+   "url": "https://www.boursorama.com/bourse/opcvm/cours/MP-802666/",
+   "name": "Cours HSBC Actions Patrimoine AC",
+   "p1": 8.71,
+   "p3": 25.5,
+   "p5": 35.1,
+   "fees": 1.55,
+   "sri": 7,
+   "manager": "HSBC",
+   "category": "s Palmarès",
+   "ok": true
+  }
+ ]
+}
