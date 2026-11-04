@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-03T07:39",
+ "maj": "2026-11-04T07:43",
  "source": "Boursorama",
  "supports": [
   {
@@ -19,7 +19,7 @@
    "isin": "FR001400LB16",
    "url": "https://www.boursorama.com/bourse/opcvm/cours/0P0001S01P/",
    "name": "Cours Aleph Monde R",
-   "p1": 16.37,
+   "p1": 12.55,
    "p3": -46.79,
    "p5": -59.29,
    "fees": 1.95,
