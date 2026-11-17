@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-16T09:13",
+ "maj": "2026-11-17T07:47",
  "source": "Boursorama",
  "supports": [
   {
@@ -52,7 +52,8 @@
    "sri": 7,
    "manager": "BNP",
    "category": "s Palmarès",
-   "ok": true
+   "ok": false,
+   "erreur": "<urlopen error [Errno 104] Connection reset by peer>"
   },
   {
    "isin": "LU0524465977",
@@ -65,7 +66,8 @@
    "sri": 7,
    "manager": "AFFM",
    "category": "s Palmarès",
-   "ok": true
+   "ok": false,
+   "erreur": "<urlopen error _ssl.c:994: The handshake operation timed out>"
   },
   {
    "isin": "LU0336083810",
