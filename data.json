@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-17T07:47",
+ "maj": "2026-11-18T07:45",
  "source": "Boursorama",
  "supports": [
   {
@@ -13,7 +13,8 @@
    "sri": 7,
    "manager": "pense",
    "category": "s Palmarès",
-   "ok": true
+   "ok": false,
+   "erreur": "<urlopen error [Errno 104] Connection reset by peer>"
   },
   {
    "isin": "FR001400LB16",
@@ -26,7 +27,8 @@
    "sri": 7,
    "manager": "Flornoy",
    "category": "s Palmarès",
-   "ok": true
+   "ok": false,
+   "erreur": "<urlopen error [Errno 104] Connection reset by peer>"
   },
   {
    "isin": "FR0011147594",
@@ -39,7 +41,8 @@
    "sri": 7,
    "manager": "Flornoy",
    "category": "s Palmarès",
-   "ok": true
+   "ok": false,
+   "erreur": "<urlopen error [Errno 104] Connection reset by peer>"
   },
   {
    "isin": "FR0010011171",
