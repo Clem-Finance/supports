@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-18T07:45",
+ "maj": "2026-11-19T07:46",
  "source": "Boursorama",
  "supports": [
   {
@@ -13,7 +13,7 @@
    "sri": 7,
    "manager": "pense",
    "category": "s Palmarès",
-   "ok": false,
+   "ok": true,
    "erreur": "<urlopen error [Errno 104] Connection reset by peer>"
   },
   {
@@ -27,7 +27,7 @@
    "sri": 7,
    "manager": "Flornoy",
    "category": "s Palmarès",
-   "ok": false,
+   "ok": true,
    "erreur": "<urlopen error [Errno 104] Connection reset by peer>"
   },
   {
@@ -41,7 +41,7 @@
    "sri": 7,
    "manager": "Flornoy",
    "category": "s Palmarès",
-   "ok": false,
+   "ok": true,
    "erreur": "<urlopen error [Errno 104] Connection reset by peer>"
   },
   {
@@ -55,7 +55,7 @@
    "sri": 7,
    "manager": "BNP",
    "category": "s Palmarès",
-   "ok": false,
+   "ok": true,
    "erreur": "<urlopen error [Errno 104] Connection reset by peer>"
   },
   {
@@ -69,7 +69,7 @@
    "sri": 7,
    "manager": "AFFM",
    "category": "s Palmarès",
-   "ok": false,
+   "ok": true,
    "erreur": "<urlopen error _ssl.c:994: The handshake operation timed out>"
   },
   {
